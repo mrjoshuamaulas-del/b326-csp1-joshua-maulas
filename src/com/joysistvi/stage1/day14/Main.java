@@ -9,13 +9,19 @@ public class Main {
         LoadAccount account = new LoadAccount(100.0);
 
         System.out.println("Dial *143# to access Globe Services");
-        System.out.print("Enter USSD Code: ");
-        String ussdCode = sc.nextLine();
 
-        if (!ussdCode.equals("*143#")) {
-            System.out.println("Invalid USSD Code. Goodbye!");
-            sc.close();
-            return;
+        String ussdCode = "";
+        boolean validCode = false;
+
+        while (!validCode) {
+            System.out.print("Enter USSD Code: ");
+            ussdCode = sc.nextLine();
+
+            if (ussdCode.equals("*143#")) {
+                validCode = true;
+            } else {
+                System.out.println("Invalid USSD Code. Please try again.");
+            }
         }
 
         boolean running = true;
